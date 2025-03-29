@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FutureLens</title>
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f9ff;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #1e88e5;
+      text-decoration: none;
+    }
+
+    /* Header Background Container */
+    .header-background {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: url('career.avif') center/cover no-repeat;
+    }
+
+    .header-background::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(160deg, #e1f5fe, #ffffff);
+      text-align: center;
+      clip-path: ellipse(100% 100% at 50% 0%);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #1e88e5;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #444;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .launch-btn {
+      padding: 0.8rem 2rem;
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .launch-btn:hover {
+      background: #1565c0;
+    }
+
+    /* Features */
+    .features {
+      padding: 4rem 2rem;
+      background: #fff;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: #1e88e5;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #f0f8ff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card img {
+      width: 100%;
+      border-radius: 8px;
+      max-height: 180px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    /* About */
+    .about {
+      background: #f5faff;
+      padding: 4rem 2rem;
+    }
+
+    .about h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #1e88e5;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      color: #555;
+    }
+
+    .team-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Video Section */
+    .video-section {
+      padding: 4rem 2rem;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .video-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #1e88e5;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 960px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: #e3f2fd;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #fff;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        color: #1e88e5;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .burger div {
+        background: #1e88e5;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Background -->
+  <div class="header-background">
+    <header>
+      <div class="logo">FutureLens</div>
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav id="navMenu">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="https://futurelens-c4e81.web.app/">Launch</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>FutureLens</h1>
+    <p>See your future, one career at a time. Personalized career guidance made easy.</p>
+    <a id="launch" href="https://futurelens-c4e81.web.app/">
+      <button class="launch-btn">Launch App</button>
+    </a>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>What You Can Do</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="dayinlife.png" alt="Feature 1" />
+        <h3>Day in The Life Of</h3>
+        <p>On the Website there is the a feature of a grid where I embedded YouTube videos that show a day in the life of different careers that interest children.</p>
+      </div>
+      <div class="feature-card">
+        <img src="careersearch.png" alt="Feature 2" />
+        <h3>Career Search</h3>
+        <p>This feature uses Python web scraping to search the internet for careers a child may be interested in.</p>
+      </div>
+      <div class="feature-card">
+        <img src="careerhistory.png" alt="Feature 3" />
+        <h3>Career History</h3>
+        <p>This feature stores and retrieves career exploration history for each logged-in user using a Firebase API.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <h2>Our Story</h2>
+    <p>
+      FutureLens was born out of countless conversations with young people who felt uncertain, overwhelmed, or lost when it came to figuring out how to reach their career goals. Many of them had dreams but lacked clear direction, guidance, or access to reliable resources that could help them take the next step. I recognized a real need for something practical—something that could break down complex career paths into simple, bite-sized, and achievable steps. That’s exactly what FutureLens aims to do. It’s more than just a platform; it’s a tool to help users visualize their journey, gain confidence, and take ownership of their future. This project is deeply personal to me, and building it has been both a passion and a purpose. It also represents a significant milestone in my learning journey, proudly forming part of my ALX Software Engineering Portfolio.
+    </p>
+    <div class="team-links">
+      <a href="https://github.com/BakaneN" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+      <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
+      <a href="https://github.com/BakaneN/FutureLens/tree/2e292ef181ffa016b4866e4144c1a9a50a9a33ba/FutureLens%20copy%202" target="_blank">Project Repo</a>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <h2>Watch Our Vision in Action</h2>
+    <video controls playsinline preload="auto">
+      <source src="https://vimeo.com/1070541797/bc59308846" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 FutureLens – Built for dreamers 💫
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navMenu');
+      nav.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
